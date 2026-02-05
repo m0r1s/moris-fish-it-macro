@@ -7,9 +7,8 @@ This is a simple macro for the roblox game Fish It.
 
 ## Features
 
-- **Automated Casting**: Automatically casts the rod with a "Perfect" cast most of the time.
+- **Automated Casting**: Automatically casts the rod as ast as possible.
 - **Automated Reeling**: Automatically reels in the fish as fast as possible.
-- **Adjustable Timing**: Adjustable macro timing for __Speed %__ and __Cast Wait__.
 
 ---
 
@@ -37,13 +36,6 @@ This is a simple macro for the roblox game Fish It.
 4. The script will resize your Roblox window and start doing its thing
 
 ---
-
-## Configuration
-
-Settings are automatically saved to `settings.ini` and include:
-
-- Set Speed %
-- Cast Wait time
 
 ## If Something Goes Wrong
 
