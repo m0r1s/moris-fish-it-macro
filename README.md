@@ -18,7 +18,7 @@ This is a simple macro for the roblox game Fish It.
 
 - Windows PC
 - [Autohotkey V2.0](https://www.autohotkey.com/)
-- moris Fish It Macro.ahk
+- moris Fish It v2.ahk
 - Roblox running
 
 ### Controls
