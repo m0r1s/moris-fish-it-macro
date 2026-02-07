@@ -13,49 +13,41 @@ F1::{
 
 F2:: Reload
 
-ResizeRobloxWindow(){
-    robloxWindow := ""
-    robloxTitles := ["Roblox", "ahk_exe RobloxPlayerBeta.exe", "ahk_exe RobloxPlayer.exe"]
+ResizeRobloxWindow() {
+    titles := ["Roblox", "ahk_exe RobloxPlayerBeta.exe", "ahk_exe RobloxPlayer.exe"]
+    targetTitle := ""
     
-    for title in robloxTitles {
-        try {
-            if WinExist(title) {
-                robloxWindow := title
-                break
-            }
+    for title in titles {
+        if WinExist(title) {
+            targetTitle := title
+            break
         }
     }
     
-    if (robloxWindow = "") {
-        return false
+    if (targetTitle = "") {
+        MsgBox("Roblox window not found!")
+        return
     }
     
     try {
-        WinActivate(robloxWindow)
-        Sleep(100)
-    } catch as e {
-        return false
+        WinActivate(targetTitle)
+        Sleep(500)
+        
+        style := WinGetStyle(targetTitle)
+        WS_CAPTION := 0xC00000
+        WS_THICKFRAME := 0x40000
+        
+        hasWindowBorders := (style & WS_CAPTION) || (style & WS_THICKFRAME)
+        
+        if (!hasWindowBorders) {
+            Send("{F11}")
+            Sleep(500)
+        }
+        
+        WinMove(-7, 0, 974, 630, targetTitle)
+    } catch Error as e {
+        MsgBox("Error resizing window: " . e.Message)
     }
-    try {
-        currentStyle := WinGetStyle(robloxWindow)
-    } catch as e {
-        return false
-    }
-    
-    if (!(currentStyle & 0x00C00000)) {
-        SendInput("{F11}")
-        Sleep(300)
-    }
-    
-    try {
-        WinRestore(robloxWindow)
-        WinSetStyle("+0x00C40000", robloxWindow)
-        WinMove(-7, 0, 974, 630, robloxWindow)
-    } catch as e {
-        return false
-    }
-
-    return true
 }
 
 StartFishing() {
